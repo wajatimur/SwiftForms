@@ -36,7 +36,7 @@ class FormRowDescriptor: NSObject {
     var rowType: FormRowType!
     var tag: String!
     
-    var value: NSObject!
+    dynamic var value: NSObject!
     var options: [NSObject]!
     
     var titleFormatter: TitleFormatter!
@@ -50,12 +50,18 @@ class FormRowDescriptor: NSObject {
     
     var selectorControllerClass: AnyClass!
     
+    var context = 0
+    var subscriber: ((newValue:NSObject?) -> Void)? = nil
+    
     /// MARK: Init
     
     init(tag: String, rowType: FormRowType, title: String) {
         self.tag = tag
         self.rowType = rowType
         self.title = title
+        
+        super.init()
+        self.addObserver(self, forKeyPath: "value", options: .New, context: &context)
     }
     
     /// MARK: Public interface
@@ -72,5 +78,27 @@ class FormRowDescriptor: NSObject {
             return optionValue as String
         }
         return "\(optionValue)"
+    }
+    
+    //
+    // Value Observer
+    //
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        
+        if context == &self.context {
+            NSLog("Publishing : \(change[NSKeyValueChangeNewKey])")
+            
+            if self.subscriber != nil {
+                self.subscriber!(newValue: change[NSKeyValueChangeNewKey] as? NSObject)
+            }
+            
+        } else {
+            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        }
+        
+    }
+    
+    deinit {
+        self.removeObserver(self, forKeyPath: "value", context: &self.context)
     }
 }
