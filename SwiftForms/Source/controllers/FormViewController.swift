@@ -89,6 +89,19 @@ class FormViewController : UITableViewController {
         
         cell?.rowDescriptor = rowDescriptor
         
+        // KVO value trigger
+        rowDescriptor.subscriber = { (newValue:NSObject?) in
+            //let rowDescriptorX = self.formRowDescriptorAtIndexPath(indexPath)
+            
+            if let selectedRow = self.tableView.cellForRowAtIndexPath(indexPath) as? FormBaseCell {
+                if let formBaseCellClass = self.formBaseCellClassFromRowDescriptor(rowDescriptor) {
+                    formBaseCellClass.formViewController(self, didSelectRow: selectedRow)
+                }
+            }
+            
+            self.delegate?.formViewController?(self, didSelectRowDescriptor: rowDescriptor)
+        }
+        
         // apply cell custom design
         for (keyPath, value) in rowDescriptor.cellConfiguration {
             cell?.setValue(value, forKeyPath: keyPath)
