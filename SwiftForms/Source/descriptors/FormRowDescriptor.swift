@@ -86,7 +86,7 @@ class FormRowDescriptor: NSObject {
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         
         if context == &self.context {
-            NSLog("Publishing : \(change[NSKeyValueChangeNewKey])")
+            NSLog("\(title) : \(change[NSKeyValueChangeNewKey])")
             
             if self.subscriber != nil {
                 self.subscriber!(newValue: change[NSKeyValueChangeNewKey] as? NSObject)

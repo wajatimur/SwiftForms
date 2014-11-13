@@ -12,6 +12,8 @@
 	<dict>
 		<key>9357D744973586C05D84AB3EC15F8B7328063773</key>
 		<string>bitbucket.org:ortuman/swiftforms.git</string>
+		<key>F0AB6C1B9A18491BFE4DC6C9C7C16818B2E41657</key>
+		<string>https://bitbucket.org/nematix/spectrum-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SwiftForms.xcodeproj</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>9357D744973586C05D84AB3EC15F8B7328063773</key>
 		<string>../..</string>
+		<key>F0AB6C1B9A18491BFE4DC6C9C7C16818B2E41657</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>bitbucket.org:ortuman/swiftforms.git</string>
@@ -28,6 +32,14 @@
 	<string>9357D744973586C05D84AB3EC15F8B7328063773</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F0AB6C1B9A18491BFE4DC6C9C7C16818B2E41657</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

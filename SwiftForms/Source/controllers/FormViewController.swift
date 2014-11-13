@@ -91,8 +91,6 @@ class FormViewController : UITableViewController {
         
         // KVO value trigger
         rowDescriptor.subscriber = { (newValue:NSObject?) in
-            //let rowDescriptorX = self.formRowDescriptorAtIndexPath(indexPath)
-            
             if let selectedRow = self.tableView.cellForRowAtIndexPath(indexPath) as? FormBaseCell {
                 if let formBaseCellClass = self.formBaseCellClassFromRowDescriptor(rowDescriptor) {
                     formBaseCellClass.formViewController(self, didSelectRow: selectedRow)
